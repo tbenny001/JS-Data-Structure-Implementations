@@ -1,5 +1,3 @@
-var Node = require('./LinkedListNode');
-
 function LinkedList() {
     this.head = null;
     this.length = 0;
@@ -44,3 +42,5 @@ LinkedList.prototype.deleteNodesWith = function(data) {
         }
     }
 }
+
+module.exports = LinkedList;
