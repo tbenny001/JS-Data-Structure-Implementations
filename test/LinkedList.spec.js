@@ -1,7 +1,7 @@
 var assert = require('assert');
 var LinkedList = require('./../LinkedList');
 
-describe('Give a new LinkedList', function() {
+describe('Given a new LinkedList', function() {
   var list;
   beforeEach(function() {
       list = new LinkedList();
