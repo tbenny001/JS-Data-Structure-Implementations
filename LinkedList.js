@@ -10,17 +10,6 @@ LinkedList.prototype.add = function(newNode) {
     this.length++;
 }
 
-//Insert a node at a specified index
-LinkedList.prototype.insert = function(index, newNode) {
-    var currentNode = this.head;
-    for(var i = 1; i < index; i++) {
-        currentNode = currentNode.next;
-    }
-    newNode.next = currentNode.next;
-    currentNode.next = newNode;
-    this.length++;
-}
-
 //Delete the first node that matches the passed data
 LinkedList.prototype.deleteNode = function(data) {
     var currentNode = this.head;
@@ -44,3 +33,9 @@ LinkedList.prototype.deleteNodesWith = function(data) {
 }
 
 module.exports = LinkedList;
+
+/*Find- based on data thats passed
+*Contains- based on data thats passed
+*Length
+*FindFirst- Find first element that matches this query
+*/
