@@ -1,4 +1,3 @@
-var assert = require('assert');
 var should = require('should');
 var Node = require('./../ListNode');
 var LinkedList = require('./../LinkedList');
@@ -12,7 +11,7 @@ describe('Given a new LinkedList', function() {
   });
   describe('When determining its head', function() {
     it('Then it should return null', function() {
-      assert.equal(null, list.head);
+      should.not.exist(list.head);
     });
   });
   describe('When determining its length', function() {
@@ -26,10 +25,10 @@ describe('Given a new LinkedList', function() {
           list.add(newNode);
       });
       it('Then the length should be 1', function() {
-          assert.equal(1, list.length);
+          list.length.should.be.exactly(1);
       });
       it('Then the head should point to the added Node', function() {
-         assert.equal(newNode, list.head);
+          list.head.should.be.equal(newNode);
       });
   });
 });
@@ -44,12 +43,12 @@ describe('Given a non empty LinkedList', function() {
     });
     describe('When determining its head', function() {
         it('Then it should not return null', function() {
-            assert.equal(newNode, list.head); //Add assertion library
+            list.head.should.equal(newNode);
         });
     });
     describe('When determining its length', function() {
         it('Then the length should be greater than 0', function() {
-            assert.equal(1, list.length) //Add assertion library
+            list.length.should.be.aboveOrEqual(1);
         });
     });
 });
