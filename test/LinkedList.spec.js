@@ -1,4 +1,6 @@
 var assert = require('assert');
+var should = require('should');
+var Node = require('./../ListNode');
 var LinkedList = require('./../LinkedList');
 
 describe('Given a new LinkedList', function() {
@@ -15,7 +17,7 @@ describe('Given a new LinkedList', function() {
   });
   describe('When determining its length', function() {
     it('Then it should return 0', function() {
-      assert.equal(0, list.length);
+        list.length.should.equal(0);
     });
   });
   describe('When adding a node', function() {
