@@ -31,6 +31,16 @@ describe('Given a new LinkedList', function() {
           list.head.should.be.equal(newNode);
       });
   });
+  describe('When deleting a node with the deleteNode method', function() {
+      it('Then it should return an error', function() {
+          should.throws(list.deleteNode(new Node(1)), Error, 'Cant delete from an empty linked list.');//Huh?
+      });
+  });
+  describe('When deleting a node with the deleteNodesWith method', function() {
+      it('Then it should return an error', function() {
+          should.throws(list.deleteNodesWith(new Node(1)), Error, 'Cant delete from an empty linked list.');//Huh?
+      });
+  });
 });
 
 describe('Given a non empty LinkedList', function() {

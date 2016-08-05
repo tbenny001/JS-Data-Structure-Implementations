@@ -12,6 +12,10 @@ LinkedList.prototype.add = function(newNode) {
 
 //Delete the first node that matches the passed data
 LinkedList.prototype.deleteNode = function(data) {
+    if(this.length < 1) {
+        var error = new Error("Cant delete from an empty linked list.");
+        return error;
+    }
     var currentNode = this.head;
     while(currentNode.next.data !== data) {
         currentNode = currentNode.next;
@@ -21,13 +25,18 @@ LinkedList.prototype.deleteNode = function(data) {
 
 //Delete all nodes with data that matches passed parameter
 LinkedList.prototype.deleteNodesWith = function(data) {
-    var currentNode = this.head;
-    for(var i = 0; i < this.length; i++) {
-        if(currentNode.next.data === data) {
-            currentNode.next = currentNode.next.next;
-            this.length--;
-        } else {
-            currentNode = currentNode.next;
+    if(this.length < 1) {
+        var error = new Error("Cant delete from an empty linked list.");
+        return error;
+    } else {
+        var currentNode = this.head;
+        for(var i = 0; i < this.length; i++) {
+            if(currentNode.next.data === data) {
+                currentNode.next = currentNode.next.next;
+                this.length--;
+            } else {
+                currentNode = currentNode.next;
+            }
         }
     }
 }
