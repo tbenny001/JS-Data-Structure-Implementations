@@ -59,6 +59,19 @@ LinkedList.prototype.find = function(data) {
     }
 }
 
+LinkedList.prototype.findFirst = function(data) {
+    if(this.length < 1) {
+        var error = new Error("Can't search an empty linked list.");
+        return error;
+    } else {
+        var currentNode = this.head;
+        while(currentNode.data !== data) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+}
+
 module.exports = LinkedList;
 
 /*Find- based on data thats passed

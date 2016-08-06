@@ -46,6 +46,11 @@ describe('Given a new LinkedList', function() {
           should.throws(list.find(1), Error, "Can't search an empty linked list.");
       });
   });
+  describe('When using the findFirst method', function() {
+     it('Then it should return an error', function() {
+         should.throws(list.findFirst(1), Error, "Can't search an empty linked list.");
+     });
+  });
 });
 
 describe('Given a non empty LinkedList', function() {
