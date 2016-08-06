@@ -41,6 +41,11 @@ describe('Given a new LinkedList', function() {
           should.throws(list.deleteNodesWith(new Node(1)), Error, 'Cant delete from an empty linked list.');//Huh?
       });
   });
+  describe('When using the find method', function() {
+      it('Then it should return an error', function() {
+          should.throws(list.find(1), Error, "Can't search an empty linked list.");
+      });
+  });
 });
 
 describe('Given a non empty LinkedList', function() {
