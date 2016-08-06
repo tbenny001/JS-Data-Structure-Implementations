@@ -41,6 +41,24 @@ LinkedList.prototype.deleteNodesWith = function(data) {
     }
 }
 
+LinkedList.prototype.find = function(data) {
+    if(this.length < 1) {
+        var error = new Error("Can't search an empty linked list.");
+        return error;
+    } else {
+        matchedNodes = [];
+        var currentNode = this.head;
+        for(var i = 0; i < this.length; i++) {
+            if(currentNode.data === data) {
+                matchedNodes.push(currentNode);
+            } else {
+                currentNode = currentNode.next;
+            }
+        }
+        return matchedNodes;
+    }
+}
+
 module.exports = LinkedList;
 
 /*Find- based on data thats passed
