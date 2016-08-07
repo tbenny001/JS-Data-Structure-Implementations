@@ -71,6 +71,26 @@ describe('Given a non empty LinkedList', function() {
             list.length.should.be.aboveOrEqual(1);
         });
     });
+    describe('When using the find function and the nodes exists', function() {
+        it('Then should return an array containing the found nodes', function() {
+            list.find(1).length.should.be.aboveOrEqual(1);
+        });
+    });
+    describe('When using the find function and the nodes dont exist', function() {
+        it('Then should return an empty array', function() {
+            list.find(2).length.should.equal(0);
+        });
+    });
+    describe('When using the findFirst function and the node exists', function() {
+        it('Then it should return a node that matches the passed value', function() {
+            list.findFirst(1).should.equal(newNode);
+        });
+    })
+    describe('When using the findFirst function and the node doesnt exist', function() {
+        it('Then null should be returned', function() {
+            should.not.exist(list.findFirst(2));
+        });
+    });
 });
 
 //LOOK INTO WALLABY

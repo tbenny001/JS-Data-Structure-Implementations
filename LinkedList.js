@@ -65,7 +65,7 @@ LinkedList.prototype.findFirst = function(data) {
         return error;
     } else {
         var currentNode = this.head;
-        while(currentNode.data !== data) {
+        while(currentNode !== null && currentNode.data !== data) {
             currentNode = currentNode.next;
         }
         return currentNode;
@@ -74,8 +74,7 @@ LinkedList.prototype.findFirst = function(data) {
 
 module.exports = LinkedList;
 
-/*Find- based on data thats passed
+/*
 *Contains- based on data thats passed
 *Length
-*FindFirst- Find first element that matches this query
 */
