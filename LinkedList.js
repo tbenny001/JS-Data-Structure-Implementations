@@ -14,7 +14,7 @@ LinkedList.prototype.add = function(newNode) {
 LinkedList.prototype.deleteNode = function(data) {
     if(this.length < 1) {
         var error = new Error("Cant delete from an empty linked list.");
-        return error;
+        throw error;
     }
     var currentNode = this.head;
     while(currentNode.next.data !== data) {
@@ -25,9 +25,11 @@ LinkedList.prototype.deleteNode = function(data) {
 
 //Delete all nodes with data that matches passed parameter
 LinkedList.prototype.deleteNodesWith = function(data) {
+    console.log(this, "Blah");
     if(this.length < 1) {
+        console.log(this.length);
         var error = new Error("Cant delete from an empty linked list.");
-        return error;
+        throw error;
     } else {
         var currentNode = this.head;
         for(var i = 0; i < this.length; i++) {

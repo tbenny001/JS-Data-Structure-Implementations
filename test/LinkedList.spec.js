@@ -33,12 +33,12 @@ describe('Given a new LinkedList', function() {
   });
   describe('When deleting a node with the deleteNode method', function() {
       it('Then it should return an error', function() {
-          should.throws(list.deleteNode(new Node(1)), Error, 'Cant delete from an empty linked list.');//Huh?
+          should.throws(function() {list.deleteNode(new Node(1))}, Error, 'Cant delete from an empty linked list.');//Huh?
       });
   });
   describe('When deleting a node with the deleteNodesWith method', function() {
       it('Then it should return an error', function() {
-          should.throws(list.deleteNodesWith(new Node(1)), Error, 'Cant delete from an empty linked list.');//Huh?
+          should.throws(function() {list.deleteNodesWith(new Node(1))}, Error, 'Cant delete from an empty linked list.');//Bug with should.js, wrap function call in an anonymous function
       });
   });
   describe('When using the find method', function() {
