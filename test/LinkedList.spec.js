@@ -60,6 +60,9 @@ describe('Given a non empty LinkedList', function() {
         newNode = new Node(1);
         list = new LinkedList();
         list.add(newNode);
+        for(var i = 0; i < 10; i++) {
+            list.add(new Node(i));
+        }
     });
     describe('When determining its head', function() {
         it('Then it should not return null', function() {
@@ -71,7 +74,7 @@ describe('Given a non empty LinkedList', function() {
             list.length.should.be.aboveOrEqual(1);
         });
     });
-    describe('When using the find function and the nodes exists', function() {
+    describe('When using the find function and the nodes exist', function() {
         it('Then should return an array containing the found nodes', function() {
             list.find(1).length.should.be.aboveOrEqual(1);
         });
@@ -101,6 +104,22 @@ describe('Given a non empty LinkedList', function() {
         });
         it('Then the linked list should have the same length.', function() {
             list.length.should.equal(listLength);
+        });
+    });
+    describe('When using the deleteNodesWith function and the node exists', function() {
+        beforeEach(function() {
+            var listLength = list.length;
+            var actual = list.deleteNodesWith(1);
+            var updatedLength = actual.list.length;
+        });
+        it('Then should return an object containing the number of nodes deleted and the linked list', function() {
+
+        });
+        it('Then should update the head if the previous head was deleted', function() {
+
+        });
+        it('Then should update the length based on the amount of nodes that were deleted', function() {
+
         });
     });
 });
