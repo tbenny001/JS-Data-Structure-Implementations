@@ -25,9 +25,7 @@ LinkedList.prototype.deleteNode = function(data) {
 
 //Delete all nodes with data that matches passed parameter
 LinkedList.prototype.deleteNodesWith = function(data) {
-    console.log(this, "Blah");
     if(this.length < 1) {
-        console.log(this.length);
         var error = new Error("Cant delete from an empty linked list.");
         throw error;
     } else {
