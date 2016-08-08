@@ -91,6 +91,18 @@ describe('Given a non empty LinkedList', function() {
             should.not.exist(list.findFirst(2));
         });
     });
+    describe('When using the deleteNodesWith function and the node doesnt exist', function() {
+        beforeEach(function() {
+            var listLength = list.length;
+            var actual = list.deleteNodesWith(2);
+        });
+        it('Then an error should be thrown.', function() {
+            should.throws(function() {list.deleteNodesWith(2)}, Error, 'Cannot delete node that doesnt exist.');
+        });
+        it('Then the linked list should have the same length.', function() {
+            list.length.should.equal(listLength);
+        });
+    });
 });
 
 //LOOK INTO WALLABY
