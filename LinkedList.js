@@ -29,15 +29,18 @@ LinkedList.prototype.deleteNodesWith = function(data) {
         var error = new Error("Cant delete from an empty linked list.");
         throw error;
     } else {
+        var nodesToDelete = [];
         var currentNode = this.head;
         for(var i = 0; i < this.length; i++) {
             if(currentNode.next.data === data) {
+                nodesToDelete.push(currentNode.next);
                 currentNode.next = currentNode.next.next;
                 this.length--;
             } else {
                 currentNode = currentNode.next;
             }
         }
+        return nodesToDelete;
     }
 }
 

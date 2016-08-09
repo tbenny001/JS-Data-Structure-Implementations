@@ -82,51 +82,62 @@ describe('Given a non empty LinkedList', function() {
     });
     describe('When using the find function and the nodes exist', function() {
         it('Then should return an array containing the found nodes', function() {
-            list.find(1).length.should.be.aboveOrEqual(1);
+            list.find(0).length.should.be.aboveOrEqual(1);
         });
     });
     describe('When using the find function and the nodes dont exist', function() {
         it('Then should return an empty array', function() {
-            list.find(2).length.should.equal(0);
+            list.find(3).length.should.equal(0);
         });
     });
     describe('When using the findFirst function and the node exists', function() {
         it('Then it should return a node that matches the passed value', function() {
-            list.findFirst(1).should.equal(newNode);
+            list.findFirst(0).should.equal(newNode);
         });
     })
     describe('When using the findFirst function and the node doesnt exist', function() {
         it('Then null should be returned', function() {
-            should.not.exist(list.findFirst(2));
+            should.not.exist(list.findFirst(3));
         });
     });
     describe('When using the deleteNodesWith function and the node doesnt exist', function() {
+        var listLength;
         beforeEach(function() {
-            var listLength = list.length;
-            var actual = list.deleteNodesWith(2);
+            listLength = list.length;
         });
         it('Then an error should be thrown.', function() {
-            should.throws(function() {list.deleteNodesWith(2)}, Error, 'Cannot delete node that doesnt exist.');
+            should.throws(function() {list.deleteNodesWith(3)}, Error, 'Cannot delete node that doesnt exist.');
         });
         it('Then the linked list should have the same length.', function() {
             list.length.should.equal(listLength);
         });
     });
     describe('When using the deleteNodesWith function and the node exists and it\'s the head node', function() {
+        var actual;
+        var allSame = true;
         beforeEach(function() {
-            list.deleteNodesWith(0);
+            actual = list.deleteNodesWith(0);
+            for(i = 0; i < actual.length; i++) {
+                if(actual[i].data !== 0) {
+                    allSame = false;
+                    break;
+                }
+            }
         });
-        it('Then should return ', function() {
-
+        it('Then it should return an array containing the nodes that were deleted', function() {
+            actual.length.should.be.aboveOrEqual(1);
         });
         it('Then it should update the head if the previous head was deleted', function() { //Testing for explicit values is ok in some scenarios
             list.head.should.be.equal(node1);
         });
-        it('Then should update the length based on the amount of nodes that were deleted', function() {
+        it('Then it should update the length based on the amount of nodes that were deleted', function() {
             list.length.should.be.equal(2);
         });
+        it('Then an array containing only nodes with the matched data should be returned', function() {
+            allSame.should.be.equal(true);
+        });
     });
-    describe('When using the deleteNodesWith functions and the node exists and it\'s not the head node', function() {
+    describe('When using the deleteNodesWith function and the node exists and it\'s not the head node', function() {
 
     });
 });
