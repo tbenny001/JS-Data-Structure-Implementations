@@ -56,13 +56,19 @@ describe('Given a new LinkedList', function() {
 describe('Given a non empty LinkedList', function() {
     var list;
     var newNode;
+    var node0;
+    var node1;
+    var node2;
     beforeEach(function() {
-        newNode = new Node(1);
+        newNode = new Node(0);
         list = new LinkedList();
+        node0 = new Node(0);
+        node1 = new Node(1);
+        node2 = new Node(2);
+        list.add(node2);
+        list.add(node1);
+        list.add(node0);
         list.add(newNode);
-        for(var i = 0; i < 10; i++) {
-            list.add(new Node(i));
-        }
     });
     describe('When determining its head', function() {
         it('Then it should not return null', function() {
@@ -106,21 +112,22 @@ describe('Given a non empty LinkedList', function() {
             list.length.should.equal(listLength);
         });
     });
-    describe('When using the deleteNodesWith function and the node exists', function() {
+    describe('When using the deleteNodesWith function and the node exists and it\'s the head node', function() {
         beforeEach(function() {
-            var listLength = list.length;
-            var actual = list.deleteNodesWith(1);
-            var updatedLength = actual.list.length;
+            list.deleteNodesWith(0);
         });
-        it('Then should return an object containing the number of nodes deleted and the linked list', function() {
+        it('Then should return ', function() {
 
         });
-        it('Then should update the head if the previous head was deleted', function() {
-
+        it('Then it should update the head if the previous head was deleted', function() { //Testing for explicit values is ok in some scenarios
+            list.head.should.be.equal(node1);
         });
         it('Then should update the length based on the amount of nodes that were deleted', function() {
-
+            list.length.should.be.equal(2);
         });
+    });
+    describe('When using the deleteNodesWith functions and the node exists and it\'s not the head node', function() {
+
     });
 });
 
