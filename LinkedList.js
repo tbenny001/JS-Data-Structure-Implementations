@@ -32,6 +32,13 @@ LinkedList.prototype.deleteNodesWith = function(data) {
         var nodesToDelete = [];
         var currentNode = this.head;
         for(var i = 0; i < this.length; i++) {
+            if(currentNode === this.head && this.head.data === data) {
+                nodesToDelete.push(currentNode);
+                this.head = currentNode.next;
+                currentNode = this.head;
+                this.length--;
+                continue;
+            }
             if(currentNode.next.data === data) {
                 nodesToDelete.push(currentNode.next);
                 currentNode.next = currentNode.next.next;
@@ -76,8 +83,3 @@ LinkedList.prototype.findFirst = function(data) {
 }
 
 module.exports = LinkedList;
-
-/*
-*Contains- based on data thats passed
-*Length
-*/
