@@ -59,6 +59,9 @@ describe('Given a non empty LinkedList', function() {
     var node0;
     var node1;
     var node2;
+    var originalLength;
+    var result;
+    var allSame = true;
     beforeEach(function() {
         newNode = new Node(0);
         list = new LinkedList();
@@ -101,45 +104,59 @@ describe('Given a non empty LinkedList', function() {
         });
     });
     describe('When using the deleteNodesWith function and the node doesnt exist', function() {
-        var listLength;
         beforeEach(function() {
-            listLength = list.length;
+            originalLength = list.length;
         });
         it('Then an error should be thrown.', function() {
             should.throws(function() {list.deleteNodesWith(3)}, Error, 'Cannot delete node that doesnt exist.');
         });
         it('Then the linked list should have the same length.', function() {
-            list.length.should.equal(listLength);
+            list.length.should.equal(originalLength);
         });
     });
     describe('When using the deleteNodesWith function and the node exists and it\'s the head node', function() {
-        var actual;
-        var allSame = true;
         beforeEach(function() {
-            actual = list.deleteNodesWith(0);
-            for(i = 0; i < actual.length; i++) {
-                if(actual[i].data !== 0) {
+            originalLength = list.length;
+            result = list.deleteNodesWith(0);
+            for(i = 0; i < result.length; i++) {
+                if(result[i].data !== 0) {
                     allSame = false;
                     break;
                 }
             }
         });
         it('Then it should return an array containing the nodes that were deleted', function() {
-            actual.length.should.be.aboveOrEqual(1);
+            result.length.should.be.aboveOrEqual(1);
         });
         it('Then it should update the head if the previous head was deleted', function() { //Testing for explicit values is ok in some scenarios
             list.head.should.be.equal(node1);
         });
         it('Then it should update the length based on the amount of nodes that were deleted', function() {
-            list.length.should.be.equal(2);
+            list.length.should.be.equal(originalLength - result.length);
         });
         it('Then an array containing only nodes with the matched data should be returned', function() {
             allSame.should.be.equal(true);
         });
     });
     describe('When using the deleteNodesWith function and the node exists and it\'s not the head node', function() {
-
+        beforeEach(function() {
+            originalLength = list.length;
+            result = list.deleteNodesWith(1);
+            for(i = 0; i < result.length; i++) {
+                if(result[i].data !== 1) {
+                    allSame = false;
+                    break;
+                }
+            }
+        });
+        it('Then it should return an array containing the nodes that were deleted', function() {
+            result.length.should.be.aboveOrEqual(1);
+        });
+        it('Then it should update the length based on the amount of nodes that were deleted', function() {
+            list.length.should.be.equal(originalLength - result.length);
+        });
+        it('Then an array containing only nodes with the matched data should be returned', function() {
+            allSame.should.be.equal(true);
+        });
     });
 });
-
-//LOOK INTO WALLABY
