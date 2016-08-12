@@ -129,7 +129,7 @@ describe('Given a non empty LinkedList', function() {
             list.length.should.be.equal(originalLength - result.length);
         });
         it('Then an array containing only nodes with the matched data should be returned', function() {
-            allSame.should.be.equal(true);
+            allSame.should.be.true();
         });
     });
     describe('When using the deleteNodesWith function and the node exists and it\'s not the head node', function() {
@@ -150,25 +150,48 @@ describe('Given a non empty LinkedList', function() {
             list.length.should.be.equal(originalLength - result.length);
         });
         it('Then an array containing only nodes with the matched data should be returned', function() {
-            allSame.should.be.equal(true);
+            allSame.should.be.true();
         });
     });
     describe('When using the deleteNode function and the node doesn\'t exist', function() {
         beforeEach(function() {
             originalList = list;
-            console.log(originalList);
             originalLength = list.length;
             result = list.deleteNode(3);
-            console.log(list);
         });
         it('Then it should return false', function(){
-            result.should.be.equal(false);
+            result.should.be.false();
         });
         it('Then the length should be the same', function() {
             list.length.should.be.equal(originalLength);
         });
         it('Then the list should not be altered', function() {
             list.should.be.equal(originalList);
+        });
+    });
+    describe('When using the deleteNode function and the node exists and it is the head node', function() {
+        beforeEach(function() {
+            result = list.deleteNode(0);
+        });
+        it('Then it should return true', function() {
+            result.should.be.true();
+        });
+        it('Then it should update the head', function() {
+            list.head.should.be.equal(node0);
+        });
+        it('Then it should update the length', function() {
+            list.length.should.be.equal(3);
+        });
+    });
+    describe('When using the deleteNode function and the node exists and it isn\'t the head node', function() {
+        beforeEach(function() {
+            result = list.deleteNode(1);
+        });
+        it('Then it should return true', function() {
+            result.should.be.true();
+        });
+        it('Then it should update the length', function() {
+            list.length.should.be.equal(3);
         });
     });
 });

@@ -17,17 +17,22 @@ LinkedList.prototype.deleteNode = function(data) {
         throw error;
     }
     var currentNode = this.head;
-    var wasNodeDeleted = false;
-    while(currentNode.next !== null) {
-        if(currentNode.next.data === data) {
-            currentNode.next = currentNode.next.next;
-            this.length--;
-            wasNodeDeleted = true;
-        } else {
-            currentNode = currentNode.next;
+    if(currentNode.data === data) {
+        this.head = currentNode.next;
+        this.length--;
+        return true;
+    } else {
+        while(currentNode.next !== null) {
+            if(currentNode.next.data === data) {
+                currentNode.next = currentNode.next.next;
+                this.length--;
+                return true;
+            } else {
+                currentNode = currentNode.next;
+            }
         }
+        return false;
     }
-    return wasNodeDeleted;
 }
 
 //Delete all nodes with data that matches passed parameter
