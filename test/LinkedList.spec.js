@@ -54,17 +54,11 @@ describe('Given a new LinkedList', function() {
 });
 
 describe('Given a non empty LinkedList', function() {
-    var list;
-    var newNode;
-    var node0;
-    var node1;
-    var node2;
-    var originalLength;
-    var result;
+    var list, newNode, node0, node1, node2, originalLength, result;
     var allSame = true;
     beforeEach(function() {
-        newNode = new Node(0);
         list = new LinkedList();
+        newNode = new Node(0);
         node0 = new Node(0);
         node1 = new Node(1);
         node2 = new Node(2);
@@ -157,6 +151,24 @@ describe('Given a non empty LinkedList', function() {
         });
         it('Then an array containing only nodes with the matched data should be returned', function() {
             allSame.should.be.equal(true);
+        });
+    });
+    describe('When using the deleteNode function and the node doesn\'t exist', function() {
+        beforeEach(function() {
+            originalList = list;
+            console.log(originalList);
+            originalLength = list.length;
+            result = list.deleteNode(3);
+            console.log(list);
+        });
+        it('Then it should return false', function(){
+            result.should.be.equal(false);
+        });
+        it('Then the length should be the same', function() {
+            list.length.should.be.equal(originalLength);
+        });
+        it('Then the list should not be altered', function() {
+            list.should.be.equal(originalList);
         });
     });
 });

@@ -17,10 +17,17 @@ LinkedList.prototype.deleteNode = function(data) {
         throw error;
     }
     var currentNode = this.head;
-    while(currentNode.next.data !== data) {
-        currentNode = currentNode.next;
+    var wasNodeDeleted = false;
+    while(currentNode.next !== null) {
+        if(currentNode.next.data === data) {
+            currentNode.next = currentNode.next.next;
+            this.length--;
+            wasNodeDeleted = true;
+        } else {
+            currentNode = currentNode.next;
+        }
     }
-    currentNode.next = currentNode.next.next;
+    return wasNodeDeleted;
 }
 
 //Delete all nodes with data that matches passed parameter
@@ -31,7 +38,7 @@ LinkedList.prototype.deleteNodesWith = function(data) {
     } else {
         var nodesToDelete = [];
         var currentNode = this.head;
-        for(var i = 0; i < this.length; i++) {
+        for(var i = 0; i < this.length; i++) { //If possible, refine this logic
             if(currentNode === this.head && this.head.data === data) {
                 nodesToDelete.push(currentNode);
                 this.head = currentNode.next;
