@@ -1,10 +1,13 @@
 var should = require('should');
 var Node = require('./../ListNode');
 var LinkedList = require('./../LinkedList');
+var Stack = require('./../Stack');
 
 describe('Given a new Stack', function() {
     beforeEach(function() {
         var stack1 = new Stack();
+        
+        stack1.push(1);
     });
     describe('When using the top function', function() {
         it('Then it should return null', function() {
@@ -13,10 +16,10 @@ describe('Given a new Stack', function() {
     });
     describe('When using the push function', function() {
         it('Then it should add the new item to the stack', function() {
-
+            stack1.length.should.be(1);
         });
         it('Then the top variable should be set to the new item', function() {
-
+            stack1.top.should.equal();
         });
     });
     describe('When using the pop function', function() {

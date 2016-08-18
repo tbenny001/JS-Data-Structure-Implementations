@@ -1,12 +1,12 @@
-var Node = require('./../ListNode');
-var LinkedList = require('./../LinkedList');
+var LinkedList = require('./LinkedList');
 
 function Stack() {
-    
     this.top = null;
 }
 
-Stack.prototype.push = function() {
+Stack.prototype = new LinkedList();
+
+Stack.prototype.push = function(data) {
 
 }
 
@@ -15,5 +15,9 @@ Stack.prototype.pop = function() {
 }
 
 Stack.prototype.isEmpty = function() {
-    (this.top === null) ? return true : return false;
+    var isEmpty;
+    (this.top === null) ? isEmpty = true : isEmpty = false;
+    return isEmpty;
 }
+
+module.exports = Stack;
