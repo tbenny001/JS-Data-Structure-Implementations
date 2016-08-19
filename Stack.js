@@ -12,7 +12,13 @@ Stack.prototype.push = function(newNode) {
 }
 
 Stack.prototype.pop = function() {
-    return null;
+    var itemToPop = this.top;
+    try{
+        this.deleteNode(itemToPop);
+    } catch(err) {
+        return null;
+    }
+    return itemToPop;
 }
 
 Stack.prototype.isEmpty = function() {
@@ -22,3 +28,7 @@ Stack.prototype.isEmpty = function() {
 }
 
 module.exports = Stack;
+
+/* NOTES:
+Should I decouple the stack class from the LinkedList class?
+*/
