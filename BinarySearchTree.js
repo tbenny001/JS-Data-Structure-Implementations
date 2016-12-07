@@ -2,6 +2,7 @@ var TreeNode = require('./TreeNode');
 
 function BinarySearchTree() {
     this.root = null;
+    this.size = 0;
 }
 
 BinarySearchTree.prototype = {
@@ -9,6 +10,7 @@ BinarySearchTree.prototype = {
         var newNode = new TreeNode(value);
         if(this.root === null) {
             this.root = newNode;
+            this.size++;
         } else {
             var currentNode = this.root;
             while(currentNode){
@@ -18,14 +20,16 @@ BinarySearchTree.prototype = {
                     } else {
                         currentNode.right = newNode;
                         newNode.parent = currentNode;
+                        this.size++;
                         break;
                     }
-                } else if (newNode.data < currentNode.data) {
+                } else if (newNode.data <= currentNode.data) {
                     if(currentNode.left !== null) {
                         currentNode = currentNode.left;
                     } else {
                         currentNode.left = newNode;
                         newNode.parent = currentNode;
+                        this.size++;
                         break;
                     }
                 }
@@ -33,7 +37,7 @@ BinarySearchTree.prototype = {
         }
     },
     find: function(value) {
-        if(this.root == null) {
+        if(this.size == 0) {
             var err = new Error("This is an empty tree. Nothing to find yet.");
             throw(err);
         }
@@ -50,13 +54,17 @@ BinarySearchTree.prototype = {
         var err = new Error("This value does not exist");
         throw err;
     },
-    // delete: function(value) {
-    //     try(find(value)) {
-    //
-    //     } catch(err) {
-    //         return err;
-    //     }
-    // }
+    delete: function(value) {
+        if(this.size == 0) {
+            var err = new Error("This is an empty tree. No nodes to delete...");
+            throw(err);
+        }
+        // try {
+        //     find(value)
+        // } catch(err) {
+        //     return err;
+        // }
+    }
 }
 
 module.exports = BinarySearchTree;
