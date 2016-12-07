@@ -1,10 +1,10 @@
 var TreeNode = require('./TreeNode');
 
-function BinaryTree() {
+function BinarySearchTree() {
     this.root = null;
 }
 
-BinaryTree.prototype = {
+BinarySearchTree.prototype = {
     add: function(value) { //Note: Duplicates have not been accounted for
         var newNode = new TreeNode(value);
         if(this.root === null) {
@@ -33,6 +33,10 @@ BinaryTree.prototype = {
         }
     },
     find: function(value) {
+        if(this.root == null) {
+            var err = new Error("This is an empty tree. Nothing to find yet.");
+            throw(err);
+        }
         var currentNode = this.root;
         while(currentNode) {
             if(value > currentNode.data) {
@@ -44,19 +48,15 @@ BinaryTree.prototype = {
             }
         }
         var err = new Error("This value does not exist");
-        return err;
-    }
+        throw err;
+    },
+    // delete: function(value) {
+    //     try(find(value)) {
+    //
+    //     } catch(err) {
+    //         return err;
+    //     }
+    // }
 }
 
-
-
-var b1 = new BinaryTree();
-
-b1.add(3);
-b1.add(2);
-b1.add(8);
-b1.add(7);
-
-console.log(b1.find(9));
-
-module.exports = BinaryTree;
+module.exports = BinarySearchTree;
